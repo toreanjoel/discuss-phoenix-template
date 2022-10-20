@@ -1,0 +1,27 @@
+<%# This will add elixir in the template of the html %>
+<%# form_for creates a form elm and the properties in the func creates the properties %>
+<%# The param of the anon func is a ref to the form object %>
+<%# @ is a ref to a variable passed to the template %>
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th></th>
+        <th width="10%"><a href="<%= Routes.topic_path(@conn, :new)%>"><i class="material-icons">add</i></a></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= for topic <- @topics do %>
+    <tr>
+      <td><%=topic.title%></td>
+      <td width="10%">
+        <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic.id)  %>
+      </td>
+      <td width="10%">
+        <%= link "Delete", to: Routes.topic_path(@conn, :delete, topic.id), method: :delete  %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,20 @@
+<%# This will add elixir in the template of the html %>
+<%# form_for creates a form elm and the properties in the func creates the properties %>
+<%# The param of the anon func is a ref to the form object %>
+<%# @ is a ref to a variable passed to the template %>
+<%= form_for @changeset, Routes.topic_path(@conn, :update, @topic), fn form ->  %>
+  <div class="form-group">
+    <%# For each field we need ot ref the form it is bound to %>
+    <%# create text input that has a name title, plachehlolder and class %>
+    <%= text_input form, :title, placeholder: "Title", class: "form-control" %>
+    <%= error_tag form, :title %>
+    <%= textarea form, :description, placeholder: "Description", class: "form-control materialize-textarea" %>
+    <%= error_tag form, :description %>
+
+  </div>
+
+  <%# create submit button with a class  %>
+  <%= submit "Edit Topic", class: "btn btn-primary" %>
+<% end %>
+<hr />
+<a href="/">Home</a>
